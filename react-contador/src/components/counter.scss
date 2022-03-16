@@ -1,0 +1,23 @@
+.counter-main{
+  font-size: 35px;
+  color: #0ed6d6;
+  border: 3px solid #13bdbd;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.counter-buttons button {
+  border: 2px solid #13bdbd;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 25px;
+  padding: 10px 15px;
+  margin-left: 30px;
+  color: white;
+}
+
+.counter-buttons button:hover {
+  background-color: #13bdbd;
+}
