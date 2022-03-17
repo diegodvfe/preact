@@ -35,6 +35,11 @@ export class Counter extends React.Component {
              >
               disminuir
             </button>
+             <button
+             onClick={()=>this.setState({count: this.state.count -1})}
+             >
+              Reinicio
+            </button>
 
           </div>
         </div>
