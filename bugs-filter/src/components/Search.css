@@ -1,0 +1,32 @@
+
+.search-button{
+   background-color: transparent;
+  padding: 11px 23px;
+  background-color: rgb(255, 255, 255);
+  color: aqua;
+  font-size: 15px;
+  font-family: sans-serif;
+  border-radius: 10px;
+  position: relative;
+  left: 10px;
+  border: 2px solid aqua;
+}
+
+.search-button button:hover{
+  background-color: rgb(5, 98, 98);
+}
+
+.input{
+
+  padding: 10px;
+  color: aqua;
+  background-color: black;
+  border-radius: 6px;
+  color: white;
+  margin: 0 40px;
+
+}
+
+.input :placeholder{
+  color: white;
+}
