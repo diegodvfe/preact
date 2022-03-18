@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components"
+// import styled from "styled-components"
+import Card from "./Card"
+import Wrapper from "./Wrapper"
+import Gradient from "./Gradient";
 import { Splide, SplideSlide} from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+
 
 function Popular() {
 
@@ -11,31 +15,41 @@ function Popular() {
       getPopular();
     }, [])
 
-  const getPopular = async () =>{
+  const getPopular = async () =>{ // Esta para no opstaculizar la llamada
+    const check = localStorage.getItem("SetPopular");
 
-    const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API}&number=10`);
+    if (check){
+      setPopular(JSON.parse(check));
+    }else{
+          const apiKey = '6f12bb4d12cb4efbb483e5b8c6b3c4a5'
+          const api = await fetch(
+            `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=10`);
+          const data = await api.json();
 
-    const data = await api.json();
-    setPopular(data.recipes)
-    console.log(data.recipes);
-    console.log(data);
+          localStorage.setItem("SetPopular", JSON.stringify(data.recipes));
+          setPopular(data.recipes)
+          console.log(data.recipes);
+    }
+    // console.log(data);
   }
 
 
     return (
       <div>
             <Wrapper>
-              <h3>Popular Picks</h3>
-              <Splide options={{
+              <h3 className="popular-tips">Popular Tips</h3>
+              <Splide
+              options={{
                 perPage:4,
                 arrows: false,
                 pagination: false,
                 drag: 'free',
                 gap: "5rem",
-              }}>
+              }}
+              >
               {popular.map((recipe) =>{
                 return(
-                  <SplideSlide>
+                  <SplideSlide key={recipe.id}>
                   <Card>
                     <p>{recipe.title}</p>
                     <img src={recipe.image} alt={recipe.title} />
@@ -49,53 +63,5 @@ function Popular() {
       </div>
     )
 }
-
-const Wrapper = styled.div`
-    margin: 4rem 0rem;
-`
-
-const Card = styled.div`
-  min-height: 25rem;
-  border-radius: 2rem;
-  overflow: hidden;
-  position: relative;
-
-
-  img {
-    border-radius: 1.2rem;
-    position:absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-  }
-  p{
-    position: absolute;
-    z-index: 10;
-    left: 50%;
-    bottom: 0%;
-    transform: translate(-50%, 0%);
-    color: white;
-    width: 100%;
-    text-align:center;
-    font-weight: 600;
-    font-size:1.5rem;
-    height: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`
-
-const Gradient = styled.div`
-  z-index: 3;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient( rgba(0,0,0,0), rgbab(0,0,0,1))
-`
-
-
 
 export default Popular
