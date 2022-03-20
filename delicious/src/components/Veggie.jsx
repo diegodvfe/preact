@@ -35,7 +35,7 @@ function Veggie() {
       <Wrapper>
         <h3 className="popular-tips">Our Veggie pieck</h3>
         <Splide
-        options={{
+          options={{
           perPage:3,
           arrows: false,
           pagination: false,
