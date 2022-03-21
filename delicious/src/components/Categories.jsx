@@ -31,8 +31,8 @@ const List = styled.div`
   display:flex;
   justify-content: space-around;
   margin:1.5rem 0rem;
-border-radius: 10px;
-border: 3px solid black;
+/* border-radius: 10px; */
+/* border: 3px solid black; */
 padding: 0.2rem;
 `
 

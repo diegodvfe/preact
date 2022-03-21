@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import {motion} from "framer-motion"
 import {Link, useParams } from 'react-router-dom'
-// import Gradient from "../components/Gradient";
+import {motion} from "framer-motion"
+
 
  function Cousin() {
 
@@ -24,12 +24,19 @@ const getCousine = async (name ) => {
   }, [params.type])// los params sirve para pasar un parametro  --->
 
   return (
-    <Grid>
+    <Grid
+      animate={{opacity: 1}}
+      initial={{opacity: 0}}
+      exit={{opacity: 0}}
+      transition={{duration: 0.6}}
+    >
       {cuisine.map((item)=>{
         return(
           <Card key={item.id}>
+            <Link to={'/recipe/' + item.id}>
             <img src={item.image} alt="" />
             <h4>{item.title}</h4>
+            </Link>
           </Card>
         )
       })}
@@ -37,7 +44,7 @@ const getCousine = async (name ) => {
   )
 }
 
-const Grid = styled.div`
+const Grid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 3rem;

@@ -4,6 +4,7 @@ import Wrapper from "./Wrapper"
 import Gradient from "./Gradient";
 import { Splide, SplideSlide} from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+import {Link} from 'react-router-dom'
 
 function Veggie() {
 
@@ -47,9 +48,11 @@ function Veggie() {
           return(
             <SplideSlide key={recipe.id}>
             <Card>
+              <Link to={"/recipe/" + recipe.id}> /* Este sirve para ir a la identificacion */
               <p>{recipe.title}</p>
               <img src={recipe.image} alt={recipe.title} />
               <Gradient/>
+              </Link>
             </Card>
             </SplideSlide>
           );
