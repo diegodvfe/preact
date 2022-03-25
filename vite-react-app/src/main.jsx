@@ -1,10 +1,18 @@
 import {StrictMode} from 'react'
 import {render} from 'react-dom'
-import './index.css'
+import { App } from './components/App'
+import { LifeCicle } from './components/liefCicle'
 
-ReactDOM.render(
+
+import './styles/index.css'
+
+render(
   <StrictMode>
-   <p>Vite app</p>
+    <>
+    <App/>
+
+    <LifeCicle/>
+    </>
   </StrictMode>,
   document.getElementById('root')
 )
